@@ -1,15 +1,15 @@
-import CustomTabBar from "../../components/custom-tab-bar";
 
 definePageConfig({
-    navigationBarTitleText: '点单'
+    navigationBarTitleText: '点单',
+    usingComponents:{}
+
 })
 
 const Index = () => {
     return (
         <>
             点单
-            <CustomTabBar/>
-        </>
+z        </>
     );
 };
 

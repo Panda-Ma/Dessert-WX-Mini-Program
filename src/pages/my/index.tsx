@@ -1,14 +1,14 @@
-import CustomTabBar from "../../components/custom-tab-bar";
 
 definePageConfig({
-    navigationBarTitleText: '我的'
+    navigationBarTitleText: '我的',
+    usingComponents:{}
+
 })
 
 const Index = () => {
     return (
         <div>
             我的
-            <CustomTabBar/>
         </div>
     );
 };

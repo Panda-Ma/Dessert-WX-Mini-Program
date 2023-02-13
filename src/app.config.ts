@@ -31,6 +31,7 @@ export default defineAppConfig({
                 , pagePath: 'pages/my/index'
             }
         ],
-        custom: true
+        custom: true,
     },
+    usingComponents:{}
 })

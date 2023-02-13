@@ -11,7 +11,6 @@ export const tabBarSlice=createSlice({
     initialState,
     reducers:{
         setSelected:(state,action:PayloadAction<number>)=>{
-            console.log(action)
             state.selected=action.payload
         }
     }
