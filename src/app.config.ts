@@ -17,21 +17,29 @@ export default defineAppConfig({
             {
                 pagePath: 'pages/home/index',
                 text: '首页',
+                iconPath:'./assets/home.png',
+                selectedIconPath:'./assets/home.png',
             },
             {
                 text: '点单'
-                , pagePath: 'pages/shop/index'
+                , pagePath: 'pages/shop/index',
+                iconPath:'./assets/shop.png',
+                selectedIconPath:'./assets/shop.png',
             },
             {
                 pagePath: 'pages/order/index',
                 text: '订单',
+                iconPath:'./assets/order.png',
+                selectedIconPath:'./assets/order.png',
             },
             {
                 text: '我的'
                 , pagePath: 'pages/my/index'
+                ,iconPath: './assets/my.png'
+                ,selectedIconPath: './assets/my.png'
             }
         ],
-        custom: true,
+        // custom: true,
     },
     usingComponents:{}
 })

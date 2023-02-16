@@ -6,6 +6,7 @@ import {setSelected} from "../store/containers/tabBarSlice";
 import home from '../assets/home.png'
 import shop from '../assets/shop.png'
 import order from '../assets/order.png'
+import my from '../assets/my.png'
 const Index = () => {
     // 虽然此tabBar组件使用了react redux状态管理，但是nutui tabbar的visibke属性不能实时更新，只能将激活颜色设与未激活一样
     const dispatch = useAppDispatch()
@@ -28,7 +29,7 @@ const Index = () => {
         },
         {
             text: '我的'
-            , icon: 'my'
+            , icon: my
             , pagePath: '/pages/my/index'
         }
     ]);
