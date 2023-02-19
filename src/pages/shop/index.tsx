@@ -1,4 +1,4 @@
-import SelectGoods from "./selectGoods";
+import Category from "./category";
 
 definePageConfig({
     navigationBarTitleText: '点单',
@@ -10,7 +10,7 @@ const Index = () => {
     return (
         <>
             点单
-            <SelectGoods></SelectGoods>
+            <Category></Category>
 z        </>
     );
 };

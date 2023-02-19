@@ -29,7 +29,7 @@ const Index = () => {
         <>
             <Tabs value={tabValue} titleScroll direction={'vertical'}
                   onChange={({paneKey}) => serTabValue(paneKey)}
-                  style={{height: '500px'}}>
+                  style={{height: '900px'}}>
                 {list.map(item => {
                     return (
                         <TabPane key={item} title={`Tab ${item}`}>

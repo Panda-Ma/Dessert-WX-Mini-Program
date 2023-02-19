@@ -17,29 +17,31 @@ export default defineAppConfig({
             {
                 pagePath: 'pages/home/index',
                 text: '首页',
-                iconPath:'./assets/home.png',
-                selectedIconPath:'./assets/home.png',
+                iconPath:'./assets/chef-hat.png',
+                selectedIconPath:'./assets/chef-hat-selected.png',
             },
             {
                 text: '点单'
                 , pagePath: 'pages/shop/index',
-                iconPath:'./assets/shop.png',
-                selectedIconPath:'./assets/shop.png',
+                iconPath:'./assets/restaurant-alt2.png',
+                selectedIconPath:'./assets/restaurant-alt2-selected.png',
             },
             {
                 pagePath: 'pages/order/index',
                 text: '订单',
-                iconPath:'./assets/order.png',
-                selectedIconPath:'./assets/order.png',
+                iconPath:'./assets/clipboard-check.png',
+                selectedIconPath:'./assets/clipboard-check-selected.png',
             },
             {
                 text: '我的'
                 , pagePath: 'pages/my/index'
-                ,iconPath: './assets/my.png'
-                ,selectedIconPath: './assets/my.png'
+                ,iconPath: './assets/user.png'
+                ,selectedIconPath: './assets/user-selected.png'
             }
         ],
         // custom: true,
+        color:'#8a8a8a',
+        selectedColor:'#221f20',
     },
     usingComponents:{}
 })
