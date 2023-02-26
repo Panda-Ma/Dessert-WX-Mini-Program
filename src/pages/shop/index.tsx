@@ -2,16 +2,15 @@ import Category from "./category";
 
 definePageConfig({
     navigationBarTitleText: '点单',
-    usingComponents:{}
+    usingComponents: {}
 
 })
 
 const Index = () => {
     return (
         <>
-            点单
             <Category></Category>
-z        </>
+        </>
     );
 };
 
