@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {TabPane, Tabs} from "@nutui/nutui-react-taro";
 import Goods from "../goods";
 import Taro from "@tarojs/taro";
@@ -20,11 +20,7 @@ const Index = () => {
             price: i
         },)
     }
-    const [windowHeight, setWindowHeight] = useState(0)
-    useEffect(() => {
-        const windowInfo = Taro.getWindowInfo()
-        setWindowHeight(windowInfo.windowHeight)
-    })
+    const [windowHeight, _setWindowHeight] = useState(Taro.getWindowInfo().windowHeight)
     return (
         <>
             <Tabs value={tabValue} titleScroll direction={'vertical'}

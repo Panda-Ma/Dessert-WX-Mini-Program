@@ -1,7 +1,6 @@
 import {Avatar, Button, Ellipsis, Price} from "@nutui/nutui-react-taro";
-// import {getCount} from "../../../request/api/test";
-import Detail from "../detail";
-import {useRef} from "react";
+import {useAppDispatch} from "../../../store/hooks";
+import {initInfo, open} from "../../../store/containers/popupSlice";
 
 type Props = {
     name: string,
@@ -10,10 +9,11 @@ type Props = {
     price: number
 }
 const Index: React.FunctionComponent<Props> = (props) => {
-    const popupRef = useRef()
+    const dispatch = useAppDispatch()
     const showPopup = () => {
-        // @ts-ignore
-        popupRef.current.setShowPopup(true)
+        dispatch(initInfo(props))
+        dispatch(open())
+        console.log('点击')
     }
     return (
         <>
@@ -31,16 +31,15 @@ const Index: React.FunctionComponent<Props> = (props) => {
                 }}>
                     <h3 style={{fontWeight: 'bolder'}}>{props.name}</h3>
                     <div style={{fontSize: '10px', color: '#ccc', overflow: "hidden"}}>
-                        <Ellipsis content={props.intro} rows={1}></Ellipsis>
+                        <Ellipsis content={props.intro} rows={2}></Ellipsis>
                     </div>
                     <div style={{display: "flex", justifyContent: 'space-between', alignItems: 'center'}}>
                         <Price price={props.price} size={'normal'} needSymbol decimalDigits={1}
                                style={{color: "black", fontWeight: 'bolder', fontSize: '10px'}}></Price>
-                        <Button color={'green'} size={'small'} >选择</Button>
+                        <Button color={'green'} size={'small'}>选择</Button>
                     </div>
                 </div>
             </div>
-            <Detail name={props.name} img={props.img} intro={props.intro} price={props.price} ref={popupRef}></Detail>
         </>
     );
 };

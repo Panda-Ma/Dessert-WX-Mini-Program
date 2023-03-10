@@ -4,7 +4,8 @@ interface PopupState {
     isShow: boolean,//是否展示popup
     name: string,// 商品名
     img: string,// 图片链接
-    price: number// 价格
+    price: number,// 价格
+    intro: string
 }
 
 const initialState: PopupState = {
@@ -12,6 +13,7 @@ const initialState: PopupState = {
     name: '',
     img: '',
     price: -1,
+    intro: ''
 }
 export const popupSlice = createSlice({
     name: 'popup',
@@ -27,6 +29,7 @@ export const popupSlice = createSlice({
             state.name = action.payload.name
             state.img = action.payload.img
             state.price = action.payload.price
+            state.intro=action.payload.intro
         }
     }
 })
