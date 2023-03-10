@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import tabBarReducer from "./containers/tabBarSlice";
+import popupReducer from "./containers/popupSlice";
 
 const store = configureStore({
     reducer: {
-        tabBar:tabBarReducer
+        tabBar:tabBarReducer,
+        popup:popupReducer
     },
 })
 
