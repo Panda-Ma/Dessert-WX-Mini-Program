@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface PopupState {
+    id:number,
     isShow: boolean,//是否展示popup
     name: string,// 商品名
     img: string,// 图片链接
@@ -9,6 +10,7 @@ interface PopupState {
 }
 
 const initialState: PopupState = {
+    id:-1,
     isShow: false,
     name: '',
     img: '',
@@ -26,6 +28,7 @@ export const popupSlice = createSlice({
             state.isShow = false
         },
         initInfo: (state, action) => {
+            state.id=action.payload.id
             state.name = action.payload.name
             state.img = action.payload.img
             state.price = action.payload.price

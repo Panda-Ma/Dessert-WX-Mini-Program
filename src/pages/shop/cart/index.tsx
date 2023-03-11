@@ -1,4 +1,4 @@
-import {Badge, Icon} from "@nutui/nutui-react-taro";
+import {Icon} from "@nutui/nutui-react-taro";
 import Taro from "@tarojs/taro";
 import bag from '../../../assets/bag.png'
 
@@ -30,7 +30,21 @@ const Cart = () => {
                         <div style={{display: "flex",}}>
                             <div style={{lineHeight: '70px',position:'relative'}}>
                                 <Icon name={bag} size={35}></Icon>
-                                <div style={{position:'absolute',top:'2px',right:'-6px',borderRadius:'50%',width:'13px',height:'13px',background:'#fff',color:'#000',fontSize:'10px',lineHeight:'13px',fontWeight:'bold',textAlign:'center'}}>1</div>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '2px',
+                                    right: '-6px',
+                                    borderRadius: '50%',
+                                    width: '13px',
+                                    height: '13px',
+                                    background: '#fff',
+                                    color: '#000',
+                                    fontSize: '10px',
+                                    lineHeight: '13px',
+                                    fontWeight: 'bold',
+                                    textAlign: 'center'
+                                }}>1
+                                </div>
                             </div>
                             <div style={{fontSize: '20px', marginLeft: '20px'}}>¥18.5</div>
                         </div>

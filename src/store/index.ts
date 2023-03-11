@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 import tabBarReducer from "./containers/tabBarSlice";
 import popupReducer from "./containers/popupSlice";
+import cartReducer from './containers/cartSlice'
 
 const store = configureStore({
     reducer: {
-        tabBar:tabBarReducer,
-        popup:popupReducer
+        tabBar: tabBarReducer,
+        popup: popupReducer,
+        cart: cartReducer
     },
 })
 
