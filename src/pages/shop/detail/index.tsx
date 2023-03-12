@@ -15,16 +15,17 @@ const Detail = () => {
     const price = useAppSelector(state => state.popup.price)
     const intro = useAppSelector(state => state.popup.intro)
     const [windowWidth, _setWindowWidth] = useState(Taro.getWindowInfo().windowWidth)
-    const [num, setNum] = useState(0)
+    const [num, setNum] = useState(1)
     useEffect(() => {
         if (isShow)
             Taro.hideTabBar()
         else
             Taro.showTabBar()
     }, [isShow])
-    const close=()=>{
+    const close = () => {
         dispatch(closeDetail())
         dispatch(openBar())
+        setNum(1)
     }
 
     const addToCart = () => {
@@ -36,16 +37,31 @@ const Detail = () => {
             price
         }))
         close()
-        setNum(0)
     }
     return (
         <>
             <Popup round position={"bottom"} visible={isShow} style={{height: '80%'}} onClose={() => {
                 close()
             }}>
-                <CloseIcon></CloseIcon>
+                <div style={{
+                    background: '#d4d4d4',
+                    borderRadius: '50%',
+                    color: '#fff',
+                    height: '23px',
+                    lineHeight: '23px',
+                    position: 'fixed',
+                    marginTop: '10px',
+                    right: '10px',
+                    textAlign: 'center',
+                    width: "23px",
+                    zIndex: 1,
+                }} onClick={() => {
+                    close()
+                }}>
+                    <Icon name={'close-little'} size={10}></Icon>
+                </div>
 
-                <div >
+                <div>
                     <Image src={img} width={windowWidth + 'px'} height={windowWidth + 'px'}
                            fit={"contain"}></Image>
                 </div>
@@ -86,35 +102,10 @@ const Detail = () => {
                         加入购物袋
                     </div>
                 </div>
-<div style={{height:'1000px'}}></div>
+                <div style={{height: '1000px'}}></div>
             </Popup>
         </>
     )
 }
-const CloseIcon = () => {
-    const dispatch = useAppDispatch()
-    return (
-        <>
-            <div style={{
-                background: '#d4d4d4',
-                borderRadius: '50%',
-                color: '#fff',
-                height: '23px',
-                lineHeight: '23px',
-                position: 'fixed',
-                marginTop: '10px',
-                right: '10px',
-                textAlign: 'center',
-                width: "23px",
-                zIndex: 1,
-            }} onClick={() => {
-                dispatch(closeDetail())
-                dispatch(openBar())
-            }}>
-                <Icon name={'close-little'} size={10}></Icon>
-            </div>
 
-        </>
-    )
-}
 export default Detail

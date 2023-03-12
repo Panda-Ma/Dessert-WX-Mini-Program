@@ -12,13 +12,13 @@ definePageConfig({
 
 const Index = () => {
     const isShow = useAppSelector(state => state.cart.isBarShow)
-
+    const num = useAppSelector(state => state.cart.num)
     return (
         <>
             <Category></Category>
             <Detail></Detail>
             <CartPanel></CartPanel>
-            {isShow && <CartBar></CartBar>}
+            {isShow && (num > 0) && <CartBar></CartBar>}
         </>
     );
 };

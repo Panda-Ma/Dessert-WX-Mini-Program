@@ -22,23 +22,23 @@ const CartPanel = () => {
                 }}>
                     已选商品
                 </div>
-                <div style={{display:"flex",padding:'30px 20px'}}>
+                <div style={{padding:'30px 20px'}}>
                     {
                         cart.map(item => {
                             return (
                                 <>
-                                    <div>
-                                        <div style={{height: '50px', borderRadius: '10px', overflow: 'hidden'}}>
+                                    <div style={{display:"flex"}}>
+                                        <div style={{ borderRadius: '10px', }}>
                                             <Avatar url={item.img} shape={'square'}
                                                     style={{
-                                                        height: '90px',
-                                                        width: '90px',
+                                                        height: '75px',
+                                                        width: '75px',
                                                         borderRadius: '10px'
                                                     }}></Avatar>
                                         </div>
-                                        <div>
-                                            <h3>{item.name}</h3>
-                                            <div style={{display: "flex", justifyContent: 'space-between'}}>
+                                        <div style={{paddingLeft:'10px',flex:1,display:"flex",flexDirection:'column',justifyContent:'space-between'}}>
+                                            <h3 style={{fontSize:'20px'}}>{item.name}</h3>
+                                            <div style={{display: "flex", justifyContent: 'space-between',}}>
                                                 <div style={{fontSize: '18px'}}>¥{item.price.toFixed(1)}</div>
                                                 <div>
                                                     <InputNumber modelValue={1} buttonSize="30" inputWidth="50"
