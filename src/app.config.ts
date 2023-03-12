@@ -6,11 +6,11 @@ export default defineAppConfig({
         navigationBarTextStyle: 'black',
     },
     pages: [
+        'pages/shop/index',
         'pages/home/index',
-        'pages/index/index',
         'pages/order/index',
         'pages/my/index',
-        'pages/shop/index',
+        'pages/index/index', //测试路径
     ],
     tabBar: {
         list: [

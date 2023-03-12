@@ -2,8 +2,8 @@ import {Icon, Image, InputNumber, Popup} from "@nutui/nutui-react-taro";
 import {useEffect, useState} from "react";
 import Taro from "@tarojs/taro";
 import {useAppDispatch, useAppSelector} from "../../../store/hooks";
-import {close} from "../../../store/containers/popupSlice";
-import {addGoods} from "../../../store/containers/cartSlice";
+import {closeDetail} from "../../../store/containers/detailSlice";
+import {addGoods, openBar} from "../../../store/containers/cartSlice";
 
 
 const Detail = () => {
@@ -22,25 +22,34 @@ const Detail = () => {
         else
             Taro.showTabBar()
     }, [isShow])
+    const close=()=>{
+        dispatch(closeDetail())
+        dispatch(openBar())
+    }
 
     const addToCart = () => {
         dispatch(addGoods({
             id,
-            num
+            name,
+            img,
+            num,
+            price
         }))
-        dispatch(close())
+        close()
         setNum(0)
     }
     return (
         <>
             <Popup round position={"bottom"} visible={isShow} style={{height: '80%'}} onClose={() => {
-                dispatch(close())
+                close()
             }}>
                 <CloseIcon></CloseIcon>
-                <div>
+
+                <div >
                     <Image src={img} width={windowWidth + 'px'} height={windowWidth + 'px'}
                            fit={"contain"}></Image>
                 </div>
+
                 <div style={{padding: '5px 15px'}}>
                     <h3 style={{
                         fontSize: '18px',
@@ -55,7 +64,7 @@ const Detail = () => {
                         <div style={{fontSize: '18px'}}>¥{price.toFixed(1)}</div>
                         <div>
                             <InputNumber modelValue={num} buttonSize="30" inputWidth="50" onChangeFuc={(value) => {
-                                setNum(value as number)
+                                setNum(Number(value))
                             }}/>
                         </div>
                     </div>
@@ -77,15 +86,13 @@ const Detail = () => {
                         加入购物袋
                     </div>
                 </div>
-
-
+<div style={{height:'1000px'}}></div>
             </Popup>
         </>
     )
 }
 const CloseIcon = () => {
     const dispatch = useAppDispatch()
-    const windowHeight = Taro.getWindowInfo().windowHeight
     return (
         <>
             <div style={{
@@ -95,13 +102,14 @@ const CloseIcon = () => {
                 height: '23px',
                 lineHeight: '23px',
                 position: 'fixed',
+                marginTop: '10px',
                 right: '10px',
                 textAlign: 'center',
-                top: (windowHeight * 0.2 + 20),
                 width: "23px",
                 zIndex: 1,
             }} onClick={() => {
-                dispatch(close())
+                dispatch(closeDetail())
+                dispatch(openBar())
             }}>
                 <Icon name={'close-little'} size={10}></Icon>
             </div>

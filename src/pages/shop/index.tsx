@@ -1,6 +1,8 @@
 import Category from "./category";
 import Detail from "./detail";
-import Cart from "./cart";
+import CartBar from "./cartBar";
+import CartPanel from "./cartPanel";
+import {useAppSelector} from "../../store/hooks";
 
 definePageConfig({
     navigationBarTitleText: '点单',
@@ -9,11 +11,14 @@ definePageConfig({
 })
 
 const Index = () => {
+    const isShow = useAppSelector(state => state.cart.isBarShow)
+
     return (
         <>
             <Category></Category>
             <Detail></Detail>
-            <Cart></Cart>
+            <CartPanel></CartPanel>
+            {isShow && <CartBar></CartBar>}
         </>
     );
 };

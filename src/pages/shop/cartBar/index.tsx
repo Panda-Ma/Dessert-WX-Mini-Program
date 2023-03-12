@@ -1,9 +1,14 @@
 import {Icon} from "@nutui/nutui-react-taro";
 import Taro from "@tarojs/taro";
 import bag from '../../../assets/bag.png'
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {openPanel} from "../../../store/containers/cartSlice";
 
 const Cart = () => {
     const width = Taro.getWindowInfo().windowWidth
+    const total = useAppSelector(state => state.cart.total)
+    const num = useAppSelector(state => state.cart.num)
+    const dispatch = useAppDispatch()
     return (
         <>
             <div style={{
@@ -16,7 +21,8 @@ const Cart = () => {
                 right: 0,
                 margin: "auto",
                 borderRadius: '15px',
-                overflow: "hidden"
+                overflow: "hidden",
+                zIndex: 2010
             }}>
                 <div style={{
                     display: "flex",
@@ -28,7 +34,9 @@ const Cart = () => {
                 }}>
                     <div style={{background: `#221f20`, flex: 3, paddingLeft: "20px"}}>
                         <div style={{display: "flex",}}>
-                            <div style={{lineHeight: '70px',position:'relative'}}>
+                            <div style={{lineHeight: '70px', position: 'relative'}} onClick={() => {
+                                dispatch(openPanel())
+                            }}>
                                 <Icon name={bag} size={35}></Icon>
                                 <div style={{
                                     position: 'absolute',
@@ -43,10 +51,10 @@ const Cart = () => {
                                     lineHeight: '13px',
                                     fontWeight: 'bold',
                                     textAlign: 'center'
-                                }}>1
+                                }}>{num}
                                 </div>
                             </div>
-                            <div style={{fontSize: '20px', marginLeft: '20px'}}>¥18.5</div>
+                            <div style={{fontSize: '20px', marginLeft: '20px'}}>¥{total}</div>
                         </div>
                     </div>
                     <div style={{background: "#d5ba7c", flex: 1, textAlign: "center"}}>
