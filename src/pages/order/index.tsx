@@ -1,7 +1,6 @@
 
 definePageConfig({
     navigationBarTitleText: '订单',
-    usingComponents:{}
 
 })
 

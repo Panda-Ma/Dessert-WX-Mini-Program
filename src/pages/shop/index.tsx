@@ -6,8 +6,6 @@ import {useAppSelector} from "../../store/hooks";
 
 definePageConfig({
     navigationBarTitleText: '点单',
-    usingComponents: {}
-
 })
 
 const Index = () => {

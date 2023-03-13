@@ -1,6 +1,5 @@
 definePageConfig({
     navigationBarTitleText: '首页',
-    usingComponents:{}
 })
 const Index = () => {
 
