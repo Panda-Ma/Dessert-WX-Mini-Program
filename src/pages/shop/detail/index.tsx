@@ -102,7 +102,7 @@ const Detail = () => {
                         加入购物袋
                     </div>
                 </div>
-                <div style={{height: '1000px'}}></div>
+                <div style={{height: '100px'}}></div>
             </Popup>
         </>
     )

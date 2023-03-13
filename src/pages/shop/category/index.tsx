@@ -38,6 +38,7 @@ const Index = () => {
                                            price={item.price} id={item.id}></Goods>
                                 )
                             })}
+                            <div style={{height:'200px'}}></div>
                         </TabPane>
                     )
                 })}

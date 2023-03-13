@@ -2,13 +2,18 @@ import {Icon} from "@nutui/nutui-react-taro";
 import Taro from "@tarojs/taro";
 import bag from '../../../assets/bag.png'
 import {useAppDispatch, useAppSelector} from "../../../store/hooks";
-import {openPanel} from "../../../store/containers/cartSlice";
+import {closeBar, togglePanle} from "../../../store/containers/cartSlice";
+import {useEffect} from "react";
 
 const Cart = () => {
     const width = Taro.getWindowInfo().windowWidth
     const total = useAppSelector(state => state.cart.total)
     const num = useAppSelector(state => state.cart.num)
     const dispatch = useAppDispatch()
+    useEffect(() => {
+        if (num == 0) dispatch(closeBar())
+    }, [num])
+
     return (
         <>
             <div style={{
@@ -22,7 +27,7 @@ const Cart = () => {
                 margin: "auto",
                 borderRadius: '15px',
                 overflow: "hidden",
-                zIndex: 2010
+                zIndex: 2100
             }}>
                 <div style={{
                     display: "flex",
@@ -35,7 +40,7 @@ const Cart = () => {
                     <div style={{background: `#221f20`, flex: 3, paddingLeft: "20px"}}>
                         <div style={{display: "flex",}}>
                             <div style={{lineHeight: '70px', position: 'relative'}} onClick={() => {
-                                dispatch(openPanel())
+                                dispatch(togglePanle())
                             }}>
                                 <Icon name={bag} size={35}></Icon>
                                 <div style={{
