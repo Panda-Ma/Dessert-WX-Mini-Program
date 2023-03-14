@@ -62,7 +62,10 @@ const Cart = () => {
                             <div style={{fontSize: '20px', marginLeft: '20px'}}>¥{total}</div>
                         </div>
                     </div>
-                    <div style={{background: "#d5ba7c", flex: 1, textAlign: "center"}}>
+                    <div style={{background: "#d5ba7c", flex: 1, textAlign: "center"}} onClick={()=>{
+                        Taro.navigateTo({url:'/pages/pay/index'})
+                    }
+                    }>
                         去结算
                     </div>
                 </div>

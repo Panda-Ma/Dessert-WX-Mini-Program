@@ -1,8 +1,8 @@
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {addGoods} from "../../store/containers/cartSlice";
 import {Text} from "@tarojs/components";
-import {Icon} from "@nutui/nutui-react-taro";
+import { Icon, Popup, TextArea} from "@nutui/nutui-react-taro";
 
 definePageConfig({
     navigationBarTitleText: '订单结算'
@@ -12,19 +12,21 @@ const Pay = () => {
     const cart = useAppSelector(state => state.cart.goods)
     const total = useAppSelector(state => state.cart.total)
     const num = useAppSelector(state => state.cart.num)
-    const dispathch = useAppDispatch()
-    useEffect(() => {
-        for (let i = 0; i < 3; i++) {
-            dispathch(addGoods({
-                id: i,
-                name: '燕麦呼呼拿铁',
-                img: 'https://bkimg.cdn.bcebos.com/pic/b3119313b07eca806538dba0e67580dda144ad342567?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5',
-                price: 13,
-                num: 1
-            }))
-        }
-
-    }, [])
+    const [isShow, setIsShow] = useState(false)
+    const [remark, setRemark] = useState('')
+    // const dispathch = useAppDispatch()
+    // useEffect(() => {
+    //     for (let i = 0; i < 3; i++) {
+    //         dispathch(addGoods({
+    //             id: i,
+    //             name: '燕麦呼呼拿铁',
+    //             img: 'https://bkimg.cdn.bcebos.com/pic/b3119313b07eca806538dba0e67580dda144ad342567?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5',
+    //             price: 13,
+    //             num: 1
+    //         }))
+    //     }
+    //
+    // }, [])
     return (
         <>
             <div style={{margin: '20px 10px',}}>
@@ -84,13 +86,76 @@ const Pay = () => {
                             fontWeight: 'bold'
                         }}>¥{total.toFixed(1)}</Text></div>
                 </div>
-                <div style={{marginTop: '10px', padding: '10px 10px', background: '#fff', borderRadius: '10px',fontSize: '15px'}}>
-                   <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                       <h3 style={{fontWeight: 500, }}>备注</h3>
-                       <div style={{color:'#ddd',display:'flex',alignItems:'center'}}>留下备注信息<Icon name="rect-right"></Icon></div>
-                   </div>
+                <div style={{
+                    marginTop: '10px',
+                    padding: '10px 10px',
+                    background: '#fff',
+                    borderRadius: '10px',
+                    fontSize: '15px'
+                }}>
+                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <h3 style={{fontWeight: 500,}}>备注</h3>
+                        <div style={{color: '#ddd', display: 'flex', alignItems: 'center'}} onClick={() => {
+                            setIsShow(true)
+                        }}>
+                            <Text style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'200px'}}>{
+                                remark == '' ? '留下备注信息' : remark
+                            }</Text>
+                            <Icon name="rect-right"></Icon></div>
+                    </div>
                 </div>
             </div>
+
+            <div style={{background:"#fff",position:'fixed',bottom:0,width:'100%',height:'80px'}}>
+                <div style={{
+                    fontSize: '18px',
+                    fontWeight: 460,
+                    textAlign: "center",
+                    background: "#d5ba7c",
+                    color: 'white',
+                    height: 40,
+                    lineHeight: '40px',
+                    borderRadius: '8px',
+                    margin: '10px 20px 0 0',
+                    width:'100px',
+                    float:'right'
+                }}
+                     onClick={() => {
+                         //
+                     }}
+                >
+                    抵扣
+                </div>
+            </div>
+
+            <Popup round position={"bottom"} visible={isShow} style={{height: '45%'}} closeable onClose={() => {
+                setIsShow(false)
+            }}>
+                <h3 style={{fontWeight: 'bold', textAlign: 'center', fontSize: '18px', marginTop: '18px'}}>备注</h3>
+                <TextArea defaultValue={remark} maxlength="30" placeholder={'输入一些备注信息（口味、偏好）'}
+                          style={{background: '#eee', borderRadius: '10px', padding: '20px'}}
+                          onChange={(val) => {
+                              setRemark(val)
+                          }
+                          }/>
+                <div style={{
+                    fontSize: '18px',
+                    fontWeight: 460,
+                    textAlign: "center",
+                    background: "#d5ba7c",
+                    color: 'white',
+                    height: 40,
+                    lineHeight: '40px',
+                    borderRadius: '8px',
+                    margin: '20px 25px'
+                }}
+                     onClick={() => {
+                         setIsShow(false)
+                     }}
+                >
+                    确定
+                </div>
+            </Popup>
         </>
     )
 }
