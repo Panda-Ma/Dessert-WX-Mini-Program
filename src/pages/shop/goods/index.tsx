@@ -1,4 +1,4 @@
-import {Avatar, Ellipsis} from "@nutui/nutui-react-taro";
+import { Ellipsis} from "@nutui/nutui-react-taro";
 import {useAppDispatch, useAppSelector} from "../../../store/hooks";
 import {initInfo, openDetail} from "../../../store/containers/detailSlice";
 import {closeBar} from "../../../store/containers/cartSlice";
@@ -23,8 +23,8 @@ const Index: React.FunctionComponent<Props> = (props) => {
         <>
             <div style={{display: 'flex', marginBottom: '30px'}} onClick={showPopup}>
                 <div style={{marginRight: '5px', height: '90px', borderRadius: '10px', overflow: 'hidden'}}>
-                    <Avatar url={props.img} shape={'square'} size={'large'}
-                            style={{height: '90px', width: '90px', borderRadius: '10px'}}></Avatar>
+                    <img src={props.img}
+                         style={{height: '90px', width: '90px', borderRadius: '10px'}}></img>
                 </div>
                 <div style={{
                     flex: 1,
@@ -36,8 +36,13 @@ const Index: React.FunctionComponent<Props> = (props) => {
                     <div style={{fontSize: '10px', color: '#ccc', overflow: "hidden", height: '30px'}}>
                         <Ellipsis content={props.intro} rows={2}></Ellipsis>
                     </div>
-                    <div style={{display: "flex", justifyContent: 'space-between', marginTop: '13px',alignItems:"center"}}>
-                        <div style={{fontSize: '16px',fontWeight:'bold'}}>¥{props.price.toFixed(1)}</div>
+                    <div style={{
+                        display: "flex",
+                        justifyContent: 'space-between',
+                        marginTop: '13px',
+                        alignItems: "center"
+                    }}>
+                        <div style={{fontSize: '16px', fontWeight: 'bold'}}>¥{props.price.toFixed(1)}</div>
                         <div style={{position: 'relative'}}>
                             <div style={{
                                 background: '#d5ba7c',
@@ -66,8 +71,8 @@ const Index: React.FunctionComponent<Props> = (props) => {
                                                 fontSize: '10px',
                                                 lineHeight: '13px',
                                                 fontWeight: 'bold',
-                                                textAlign: 'center'
-                                            }}>
+                                                textAlign: 'center',
+                                            }} key={item.id}>
                                                 {item.num}
                                             </div>
                                         )

@@ -5,5 +5,6 @@ export default {
     //API接口
     countUrl: 'api/count', // express模版测试接口，获取counter
     homeUrl: 'home/',
+    orderUrl:'order/'
 
 }

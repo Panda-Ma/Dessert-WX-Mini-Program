@@ -1,6 +1,5 @@
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
-import {useEffect, useState} from "react";
-import {addGoods} from "../../store/containers/cartSlice";
+import { useAppSelector} from "../../store/hooks";
+import { useState} from "react";
 import {Text} from "@tarojs/components";
 import { Icon, Popup, TextArea} from "@nutui/nutui-react-taro";
 
@@ -41,8 +40,7 @@ const Pay = () => {
                         {
                             cart.map(item => {
                                 return (
-                                    <>
-                                        <div style={{display: "flex", marginBottom: '17px'}}>
+                                        <div style={{display: "flex", marginBottom: '17px'}} key={item.id}>
                                             <div style={{borderRadius: '10px',}}>
                                                 <img src={item.img}
                                                      style={{
@@ -75,7 +73,6 @@ const Pay = () => {
                                                 }}>x{item.num}</div>
                                             </div>
                                         </div>
-                                    </>
                                 )
                             })
                         }

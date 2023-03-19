@@ -1,9 +1,7 @@
 import request from "../index";
-import config from "../config";
-const inc=()=>{
-    return request(config.countUrl)
+const getInfo=()=>{
+    return request('/order/getInfo','GET')
 }
 export{
-    inc,
-
+    getInfo,
 }
