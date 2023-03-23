@@ -11,6 +11,7 @@ export default defineAppConfig({
         'pages/home/index',
         'pages/order/index',
         'pages/my/index',
+        'pages/my/coupon/index',
         'pages/index/index', //测试路径
     ],
     tabBar: {

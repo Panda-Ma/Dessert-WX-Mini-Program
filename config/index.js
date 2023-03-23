@@ -49,7 +49,7 @@ const config = {
         }
       }
     },
-    debugReact:true //指定 React 框架相关的代码是否使用开发环境（未压缩）代码，默认使用生产环境（压缩后）代码。(可以查看debug错误）
+    // debugReact:true //指定 React 框架相关的代码是否使用开发环境（未压缩）代码，默认使用生产环境（压缩后）代码。(可以查看debug错误）
   },
   h5: {
     publicPath: '/',

@@ -20,7 +20,6 @@ const Index =  () => {
 
     useEffect(() => {
         getInfo().then(res => {
-            console.log(res.data.goods);
             setList(res.data.list)
             setGoods(res.data.goods)
         })
