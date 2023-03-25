@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {getUser} from "../../request/api/my";
 import Taro from "@tarojs/taro";
+import {useDidShow} from '@tarojs/taro'
 
 definePageConfig({
     navigationBarTitleText: '我的',
@@ -8,11 +9,13 @@ definePageConfig({
 
 const Index = () => {
     const [openid, setOpenid] = useState('0')
-    useEffect(() => {
+    const [balance, setBalance] = useState('0')
+    useDidShow(() => { //返回界面触发请求（兑换优惠卷会使账户余额改变）
         getUser().then(res => {
             setOpenid(res.data.openid)
+            setBalance((res.data.balance))
         })
-    }, [])
+    })
 
     return (
         <div>
@@ -31,7 +34,8 @@ const Index = () => {
                             width: '200px',
                             overflow: 'hidden',
                             whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis'
+                            textOverflow: 'ellipsis',
+                            textAlign: 'right'
                         }}>{openid}</div>
                     </div>
                     <div style={{
@@ -48,8 +52,9 @@ const Index = () => {
                             width: '200px',
                             overflow: 'hidden',
                             whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis'
-                        }}>{openid}</div>
+                            textOverflow: 'ellipsis',
+                            textAlign: 'right'
+                        }}>{balance}</div>
                     </div>
                 </div>
                 <div>
@@ -65,7 +70,7 @@ const Index = () => {
                         margin: '10px 10px'
                     }}
                          onClick={() => {
-                             Taro.navigateTo({url:'/pages/my/coupon/index'})
+                             Taro.navigateTo({url: '/pages/my/coupon/index'})
                          }}
                     >
                         兑换优惠卷
