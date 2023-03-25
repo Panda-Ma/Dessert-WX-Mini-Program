@@ -1,31 +1,29 @@
-import { useAppSelector} from "../../store/hooks";
-import { useState} from "react";
+import {useAppSelector} from "../../store/hooks";
+import {useState} from "react";
 import {Text} from "@tarojs/components";
-import { Icon, Popup, TextArea} from "@nutui/nutui-react-taro";
+import {Icon, Popup, TextArea} from "@nutui/nutui-react-taro";
+import {submitOrder} from "../../request/api/order";
 
 definePageConfig({
     navigationBarTitleText: '订单结算'
 })
 
 const Pay = () => {
-    const cart = useAppSelector(state => state.cart.goods)
+    const goods = useAppSelector(state => state.cart.goods)
     const total = useAppSelector(state => state.cart.total)
     const num = useAppSelector(state => state.cart.num)
     const [isShow, setIsShow] = useState(false)
     const [remark, setRemark] = useState('')
-    // const dispathch = useAppDispatch()
-    // useEffect(() => {
-    //     for (let i = 0; i < 3; i++) {
-    //         dispathch(addGoods({
-    //             id: i,
-    //             name: '燕麦呼呼拿铁',
-    //             img: 'https://bkimg.cdn.bcebos.com/pic/b3119313b07eca806538dba0e67580dda144ad342567?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UxMTY=,g_7,xp_5,yp_5',
-    //             price: 13,
-    //             num: 1
-    //         }))
-    //     }
-    //
-    // }, [])
+    const pay = () => {
+        submitOrder({
+            sum: total,
+            num,
+            note:remark,
+            goods
+        }).then(res => {
+
+        })
+    }
     return (
         <>
             <div style={{margin: '20px 10px',}}>
@@ -38,41 +36,41 @@ const Pay = () => {
                         borderColor: '#eee'
                     }}>
                         {
-                            cart.map(item => {
+                            goods.map(item => {
                                 return (
-                                        <div style={{display: "flex", marginBottom: '17px'}} key={item.id}>
-                                            <div style={{borderRadius: '10px',}}>
-                                                <img src={item.img}
-                                                     style={{
-                                                         height: '75px',
-                                                         width: '75px',
-                                                         borderRadius: '6px'
-                                                     }}></img>
-                                            </div>
-                                            <div style={{flex: 1}}>
-                                                <div style={{
-                                                    paddingLeft: '10px',
-                                                    display: "flex",
-                                                    justifyContent: 'space-between',
-                                                    alignItems: 'center'
-                                                }}>
-                                                    <h3 style={{
-                                                        fontSize: '15px',
-                                                        fontWeight: 'normal'
-                                                    }}>{item.name}</h3>
-                                                    <div style={{
-                                                        fontSize: '14px',
-                                                        fontWeight: 'bold'
-                                                    }}>¥{item.price.toFixed(1)}</div>
-                                                </div>
-                                                <div style={{
-                                                    fontSize: '13px',
-                                                    textAlign: 'right',
-                                                    color: '#ccc',
-                                                    marginTop: '5px'
-                                                }}>x{item.num}</div>
-                                            </div>
+                                    <div style={{display: "flex", marginBottom: '17px'}} key={item.id}>
+                                        <div style={{borderRadius: '10px',}}>
+                                            <img src={item.img}
+                                                 style={{
+                                                     height: '75px',
+                                                     width: '75px',
+                                                     borderRadius: '6px'
+                                                 }}></img>
                                         </div>
+                                        <div style={{flex: 1}}>
+                                            <div style={{
+                                                paddingLeft: '10px',
+                                                display: "flex",
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center'
+                                            }}>
+                                                <h3 style={{
+                                                    fontSize: '15px',
+                                                    fontWeight: 'normal'
+                                                }}>{item.name}</h3>
+                                                <div style={{
+                                                    fontSize: '14px',
+                                                    fontWeight: 'bold'
+                                                }}>¥{item.price.toFixed(1)}</div>
+                                            </div>
+                                            <div style={{
+                                                fontSize: '13px',
+                                                textAlign: 'right',
+                                                color: '#ccc',
+                                                marginTop: '5px'
+                                            }}>x{item.num}</div>
+                                        </div>
+                                    </div>
                                 )
                             })
                         }
@@ -95,7 +93,12 @@ const Pay = () => {
                         <div style={{color: '#ddd', display: 'flex', alignItems: 'center'}} onClick={() => {
                             setIsShow(true)
                         }}>
-                            <Text style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',maxWidth:'200px'}}>{
+                            <Text style={{
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                maxWidth: '200px'
+                            }}>{
                                 remark == '' ? '留下备注信息' : remark
                             }</Text>
                             <Icon name="rect-right"></Icon></div>
@@ -103,7 +106,7 @@ const Pay = () => {
                 </div>
             </div>
 
-            <div style={{background:"#fff",position:'fixed',bottom:0,width:'100%',height:'80px'}}>
+            <div style={{background: "#fff", position: 'fixed', bottom: 0, width: '100%', height: '80px'}}>
                 <div style={{
                     fontSize: '18px',
                     fontWeight: 460,
@@ -114,11 +117,11 @@ const Pay = () => {
                     lineHeight: '40px',
                     borderRadius: '8px',
                     margin: '10px 20px 0 0',
-                    width:'100px',
-                    float:'right'
+                    width: '100px',
+                    float: 'right'
                 }}
                      onClick={() => {
-                         //
+                         pay()
                      }}
                 >
                     抵扣

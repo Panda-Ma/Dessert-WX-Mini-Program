@@ -32,7 +32,7 @@ const carSlice = createSlice({
             if (action.payload.num == 0) return;
 
             const arr = new Array<goodsState>()
-            let flag = false //新的商品是否已添加
+            let flag = false //新的商品是否已在购物车中
             //循环购物车，若商品已存在，则增加数量
             for (let i = 0; i < state.goods.length; i++) {
                 const item = state.goods[i]
