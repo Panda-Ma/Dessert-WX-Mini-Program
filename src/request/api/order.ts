@@ -5,7 +5,11 @@ const getInfo=()=>{
 const submitOrder=(data)=>{
     return request('/order/submitOrder',"POST",data)
 }
-export{
-    getInfo,
-    submitOrder
+const getOrder=()=>{
+    return request('/order/getOrder')
 }
+export {
+    getInfo,
+    submitOrder,
+    getOrder
+};

@@ -6,11 +6,12 @@ export default defineAppConfig({
         navigationBarTextStyle: 'black',
     },
     pages: [
+        'pages/order/index',
+        'pages/order/detail/index',
         'pages/shop/index',
         'pages/shop/pay/index',
         'pages/shop/success/index',
         'pages/home/index',
-        'pages/order/index',
         'pages/my/index',
         'pages/my/coupon/index',
         'pages/index/index', //测试路径
