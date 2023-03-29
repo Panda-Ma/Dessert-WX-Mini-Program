@@ -7,7 +7,8 @@ export default defineAppConfig({
     },
     pages: [
         'pages/shop/index',
-        'pages/pay/index',
+        'pages/shop/pay/index',
+        'pages/shop/success/index',
         'pages/home/index',
         'pages/order/index',
         'pages/my/index',

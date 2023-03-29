@@ -77,7 +77,14 @@ const carSlice = createSlice({
         closeBar: (state) => {
             state.isBarShow = false
         },
+        resetData: (state) => {
+            state.goods = []
+            state.total = 0
+            state.num = 0
+            state.isBarShow = false
+            state.isPanelShow = false
+        }
     }
 })
-export const {addGoods, changeNum, openBar, closeBar, openPanel, closePanel,togglePanle} = carSlice.actions
+export const {addGoods, changeNum, openBar, closeBar, openPanel, closePanel, togglePanle, resetData} = carSlice.actions
 export default carSlice.reducer

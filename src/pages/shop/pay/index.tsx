@@ -1,8 +1,10 @@
-import {useAppSelector} from "../../store/hooks";
 import {useState} from "react";
 import {Text} from "@tarojs/components";
 import {Icon, Popup, TextArea} from "@nutui/nutui-react-taro";
-import {submitOrder} from "../../request/api/order";
+import Taro from "@tarojs/taro";
+import {useAppDispatch, useAppSelector} from "../../../store/hooks";
+import {resetData} from "../../../store/containers/cartSlice";
+import {submitOrder} from "../../../request/api/order";
 
 definePageConfig({
     navigationBarTitleText: '订单结算'
@@ -12,17 +14,27 @@ const Pay = () => {
     const goods = useAppSelector(state => state.cart.goods)
     const total = useAppSelector(state => state.cart.total)
     const num = useAppSelector(state => state.cart.num)
+    const dispatch = useAppDispatch()
     const [isShow, setIsShow] = useState(false)
     const [remark, setRemark] = useState('')
     const pay = () => {
         submitOrder({
             sum: total,
             num,
-            note:remark,
+            note: remark,
             goods
         }).then(res => {
-
+            if (res.code == 200) {
+                dispatch(resetData())
+                Taro.redirectTo({url: "/pages/shop/success/index"})
+            }else{
+                Taro.showToast({
+                    title: res.data.msg,
+                    icon:'error'
+                })
+            }
         })
+
     }
     return (
         <>

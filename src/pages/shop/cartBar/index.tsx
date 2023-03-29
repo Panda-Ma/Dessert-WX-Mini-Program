@@ -63,7 +63,7 @@ const Cart = () => {
                         </div>
                     </div>
                     <div style={{background: "#d5ba7c", flex: 1, textAlign: "center"}} onClick={()=>{
-                        Taro.navigateTo({url:'/pages/pay/index'})
+                        Taro.navigateTo({url:'/pages/shop/pay/index'})
                     }
                     }>
                         去结算
