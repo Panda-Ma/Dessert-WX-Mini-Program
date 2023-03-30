@@ -52,7 +52,7 @@ const Index = () => {
                                     <Text>{item.state}</Text>
                                 </div>
                                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '20px'}}>
-                                    <div style={{color: '#ccc'}}>备注：{item.note}</div>
+                                    <div style={{color: '#ccc'}}>备注：{item.note==''?'未留下信息':item.note}</div>
                                     <div>
                                         <div style={{fontSize: '16px', fontWeight: 'bold'}}>¥{item.sum}</div>
                                         <div style={{color: '#ccc'}}>共{item.num}件</div>
