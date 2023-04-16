@@ -44,7 +44,8 @@ const Index = () => {
                                 borderRadius: '10px',
                                 padding: '10px',
                                 marginTop: '30px',
-                                backgroundImage: "linear-gradient(to bottom left,#d5ba7c 5%,10% , white 30%)"
+                                // backgroundImage: "linear-gradient(to bottom left,#d5ba7c 5%,10% , white 30%)",
+                                boxShadow:'10px 5px 5px rgba(0, 0, 0, 0.2)'
                             }}>
                                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                     <Text

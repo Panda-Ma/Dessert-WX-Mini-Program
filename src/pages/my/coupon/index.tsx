@@ -2,7 +2,6 @@ import {useState} from "react";
 import {Input} from "@nutui/nutui-react-taro";
 import {redeemCoupon} from "../../../request/api/my";
 import Taro from "@tarojs/taro";
-import request from "../../../request";
 
 
 const Index = () => {
@@ -14,12 +13,8 @@ const Index = () => {
             })
         })
     }
-    const create=()=>{
-        request('/my/createCoupon').then(res=>{
-            Taro.showToast({
-                title:res.data.msg
-            })
-        })
+    const clear=()=>{
+        UpdateValue('')
     }
     return (
         <div>
@@ -48,9 +43,25 @@ const Index = () => {
                     立即兑换
                 </div>
             </div>
-            <button onClick={()=>{
-             create()
-            }}>生成</button>
+            <div style={{marginTop: '10px', width: '100%'}}>
+                <div style={{
+                    fontSize: '18px',
+                    fontWeight: 460,
+                    textAlign: "center",
+                    background: "#fff",
+                    color: '#000',
+                    height: 40,
+                    lineHeight: '40px',
+                    borderRadius: '8px',
+                    margin: '10px 10px',
+                }}
+                     onClick={() => {
+                         clear()
+                     }}
+                >
+                    清空
+                </div>
+            </div>
         </div>
     );
 };

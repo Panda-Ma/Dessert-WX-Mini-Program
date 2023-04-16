@@ -18,12 +18,12 @@ export default defineAppConfig({
     ],
     tabBar: {
         list: [
-            {
-                pagePath: 'pages/home/index',
-                text: '首页',
-                iconPath:'./assets/chef-hat.png',
-                selectedIconPath:'./assets/chef-hat-selected.png',
-            },
+            // {
+            //     pagePath: 'pages/home/index',
+            //     text: '首页',
+            //     iconPath:'./assets/chef-hat.png',
+            //     selectedIconPath:'./assets/chef-hat-selected.png',
+            // },
             {
                 text: '点单'
                 , pagePath: 'pages/shop/index',
