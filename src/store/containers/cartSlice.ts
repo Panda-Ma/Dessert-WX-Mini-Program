@@ -47,15 +47,18 @@ const carSlice = createSlice({
             state.total += (action.payload.num * action.payload.price) //加入总价
             state.num += action.payload.num //加入总数
         },
-        changeNum: (state, action: PayloadAction<{ id: number, num: number }>) => { //修改单件商品数量
-            const arr = new Array<goodsState>()
+        //修改单件商品数量
+        changeNum: (state, action: PayloadAction<{ id: number, num: number }>) => {
+            const arr = new Array<goodsState>() //新的购物车商品
             for (let i = 0; i < state.goods.length; i++) {
                 const item = state.goods[i]
                 arr.push(item)
                 if (item.id == action.payload.id) {
                     const gap = action.payload.num - item.num // 新增或者减少的数值
+                    const gapMoney = gap * item.price
                     state.num += gap //更新总数
-                    state.total += (gap * item.price) //更新总价
+                    // 由于js精度计算会导致小数部分错误，加减法的解决方法：
+                    state.total = (state.total * 1000 + gapMoney * 1000) / 1000 //更新总价
                     arr[i].num = action.payload.num //更新单个商品个数
                     if (action.payload.num == 0) arr.pop() //如果商品个数为0，删除该商品
                 }

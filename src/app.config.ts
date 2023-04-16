@@ -6,9 +6,9 @@ export default defineAppConfig({
         navigationBarTextStyle: 'black',
     },
     pages: [
+        'pages/shop/index',
         'pages/order/index',
         'pages/order/detail/index',
-        'pages/shop/index',
         'pages/shop/pay/index',
         'pages/shop/success/index',
         'pages/home/index',
